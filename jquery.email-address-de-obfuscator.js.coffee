@@ -21,7 +21,7 @@
             \[at\]   # Literal hard brackets around the string "at"
             \s+      # optional whitespace, greedily
           ///i,     # Modifier: Case-insensitive (match AT, at, At…)
-          '.'
+          '@'
         ],
         [
           ///
