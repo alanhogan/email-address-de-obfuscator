@@ -20,7 +20,9 @@ Simplest usage?
 
 1. Whenever you have an email address, write it **exactly** like this, except changing `username`, `example` and `tld` as appropriate:
 
+    ~~~~~~
     <a class="js-e">username [AT] example [DOT] tld</a>
+    ~~~~~~
 
 2. Include jQuery and this plugin
 
