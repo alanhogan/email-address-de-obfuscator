@@ -66,6 +66,25 @@ Want to get fancy? Read on to customize:
     jQuery(document).deObfuscateEmailAddresses({ replacements: myReplacements });
     ~~~~~~~~
 
+### Custom anchor text
+
+Usually, you want to show the email address as well as making a `mailto:` link. After all, not everyone has an email client set up.
+
+But when that isn’t the case, you can still obfuscate your address by using a data attribute:
+
+    <a class="js-e"
+      data-js-e-addr="foo [at] example [dot] com"
+      >Contact us</a>
+
+This plugin processes this link into the equivalent of:
+
+    <a class="js-e" href="mailto:foo@example.com">Contact us</a>
+
+The data attribute is customizable using the `dataKey` configuration option.
+Your configuration value does not start with `data-`! In the above example,
+`dataKey` is set to `js-e-addr`, **not** to `data-js-e-addr`. Actually, that’s the
+default, but you could set it manually.
+
 ### Examples
 
 Absolutely. [Here’s a jsFiddle for you.](http://jsfiddle.net/alanhogan/tyLtQ/)

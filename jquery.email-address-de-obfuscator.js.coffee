@@ -12,6 +12,7 @@
   $.extend $.fn, deObfuscateEmailAddresses: (options) ->
     @defaultOptions = 
       class: 'js-e'
+      dataKey: 'js-e-addr'
       # Each replacement is a two-item array: search, replace.
       replacements:  [
         # Using CoffeeScript's expanded regex syntax. It is love.
@@ -41,10 +42,16 @@
 
       $scope.find(".#{settings.class}").each (j, anchor) ->
         $anchor = $(anchor)
-        address = $anchor.text()
+        address = $anchor.data settings.dataKey
+        if address
+          fromText = false
+        else
+          fromText = true
+          address = $anchor.text()
         for replacement in settings.replacements
           address = address.replace replacement[0], replacement[1]
-        $anchor.text(address).attr 'href', "mailto:#{address}"
+        $anchor.text(address) if fromText
+        $anchor.attr 'href', "mailto:#{address}"
 
       true # continue (to avoid returning anything weird)
     
