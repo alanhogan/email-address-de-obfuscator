@@ -4,15 +4,13 @@
 #
 # Project home on GitHub: https://github.com/alanhogan/email-address-de-obfuscator
 #
-# There are no tests, but there’s a jsFiddle: http://jsfiddle.net/alanhogan/tyLtQ/
+# There are no tests, but there’s a jsFiddle: http://jsfiddle.net/tyLtQ/3/
 #
 # Started from https://github.com/alanhogan/Coffeescript-jQuery-Plugin-Template
 
 (($, window) ->
   $.extend $.fn, deObfuscateEmailAddresses: (options) ->
     @defaultOptions = 
-      class: 'js-e'
-      dataKey: 'js-e-addr'
       # Each replacement is a two-item array: search, replace.
       replacements:  [
         # Using CoffeeScript's expanded regex syntax. It is love.
@@ -40,17 +38,14 @@
     @each (i, el) ->
       $scope = $(el) # If you need it!
 
-      $scope.find(".#{settings.class}").each (j, anchor) ->
-        $anchor = $(anchor)
-        address = $anchor.data settings.dataKey
-        if address
-          fromText = false
-        else
-          fromText = true
-          address = $anchor.text()
+      $scope.find('a[href^="mailto:"]').each (j, anchor) ->
+        $anchor = $ anchor
+        address = $anchor.attr('href')[7..-1]
+        text = $anchor.text()
         for replacement in settings.replacements
           address = address.replace replacement[0], replacement[1]
-        $anchor.text(address) if fromText
+          text = text.replace replacement[0], replacement[1]
+        $anchor.text(text)
         $anchor.attr 'href', "mailto:#{address}"
 
       true # continue (to avoid returning anything weird)

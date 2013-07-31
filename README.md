@@ -21,7 +21,7 @@ Simplest usage?
 1. Whenever you have an email address, write it **exactly** like this, except changing `username`, `example` and `tld` as appropriate:
 
     ~~~~~~
-    <a class="js-e">username [AT] example [DOT] tld</a>
+    <a href="mailto:username [AT] example [DOT] tld">username [AT] example [DOT] tld</a>
     ~~~~~~
 
 2. Include jQuery and this plugin
@@ -30,9 +30,8 @@ Simplest usage?
 
 Want to get fancy? Read on to customize:
 
-- _Where_ in the DOM changes are made,
-- What string _substitutions_ are made, and
-- What _class name_ to use when locating obfuscated email addresses.
+- _Where_ in the DOM changes are made, and
+- What string _substitutions_ are made
 
 ### Niceties
 
@@ -50,12 +49,6 @@ Want to get fancy? Read on to customize:
 
 ### Extensible
 
-* Don’t like the class name `js-e`? Choose your own:
-
-    ~~~~~~~~
-    jQuery(document).deObfuscateEmailAddresses({ "class": "magic-email-link" });
-    ~~~~~~~~
-
 * `[AT]` is too obvious? Cool. Define your own replacements as pairs of a regex or string to search for and a string replacement to make. Pass this as a configuration option:
 
     ~~~~~~~~
@@ -66,25 +59,6 @@ Want to get fancy? Read on to customize:
     jQuery(document).deObfuscateEmailAddresses({ replacements: myReplacements });
     ~~~~~~~~
 
-### Custom anchor text
-
-Usually, you want to show the email address as well as making a `mailto:` link. After all, not everyone has an email client set up.
-
-But when that isn’t the case, you can still obfuscate your address by using a data attribute:
-
-    <a class="js-e"
-      data-js-e-addr="foo [at] example [dot] com"
-      >Contact us</a>
-
-This plugin processes this link into the equivalent of:
-
-    <a class="js-e" href="mailto:foo@example.com">Contact us</a>
-
-The data attribute is customizable using the `dataKey` configuration option.
-Your configuration value does not start with `data-`! In the above example,
-`dataKey` is set to `js-e-addr`, **not** to `data-js-e-addr`. Actually, that’s the
-default, but you could set it manually.
-
 ### Examples
 
-Absolutely. [Here’s a jsFiddle for you.](http://jsfiddle.net/alanhogan/tyLtQ/)
+Absolutely. [Here’s a jsFiddle for you.](http://jsfiddle.net/tyLtQ/3/)
