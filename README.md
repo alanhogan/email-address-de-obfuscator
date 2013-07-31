@@ -87,4 +87,4 @@ default, but you could set it manually.
 
 ### Examples
 
-Absolutely. [Here’s a jsFiddle for you.](http://jsfiddle.net/alanhogan/tyLtQ/)
+Absolutely. [Here’s a jsFiddle for you.](http://jsfiddle.net/tyLtQ/2/)
